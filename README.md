@@ -2,4 +2,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## React勉強用リポジトリ
 【目標】<br />
-関西の勉強会情報をまとめるサイトを製作する
+関西の勉強会情報をまとめるサイトを製作する。<br />
+firebaseを使用する。
