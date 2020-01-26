@@ -23,11 +23,17 @@ yarn-error.log*
 # Optional npm cache directory
 .npm
 
+# Optional Firebase directory
+.firebase
+
 # Yarn Integrity file
 .yarn-integrity
 
 # Optional eslint cache
 .eslintcache
+
+# firebase
+.firebaserc
 
 # IDE
 .idea/
