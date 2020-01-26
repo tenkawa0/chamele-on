@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon, Card } from 'semantic-ui-react';
 import { Event } from '../../../service/chamele-on/model/event';
 
-const EventItem: React.FC<{ event: Event }> = ({ event }) => {
+export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
   return (
     <Card>
       <Card.Content header={event.title} />
@@ -14,4 +14,4 @@ const EventItem: React.FC<{ event: Event }> = ({ event }) => {
   );
 };
 
-export default EventItem;
+//export default EventCard;
