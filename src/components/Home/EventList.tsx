@@ -1,25 +1,15 @@
 import React from 'react';
-import { Header, Icon, Item } from 'semantic-ui-react';
-import capitalize from 'lodash/capitalize';
+import { Item } from 'semantic-ui-react';
+import EventCard from '../Common/Card/EventCard';
+import { Event } from '../../service/chamele-on/model/event';
 
-export interface TestProps {
-  text: string;
-}
-
-const EventList: React.FC<TestProps> = ({ text = 'あえあえあえあ' }) => {
-  const title = `${capitalize(text)}こんにちは`;
-
+const EventList: React.FC<{ events: Event[] }> = ({ events }) => {
   return (
     <>
-      <Header as="h2">{title}</Header>
       <Item.Group>
-        <Item key={1}>
-          <Icon name="user circle" size="huge" />
-          <Item.Content>
-            <Item.Header>aaa</Item.Header>
-            <Item.Meta>23歳</Item.Meta>
-          </Item.Content>
-        </Item>
+        {events.map(event => (
+          <EventCard event={event} />
+        ))}
       </Item.Group>
     </>
   );
