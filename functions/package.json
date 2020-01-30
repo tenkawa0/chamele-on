@@ -2,7 +2,11 @@
   "name": "functions",
   "scripts": {
     "lint": "eslint 'src/**/*.{js,ts}'",
-    "build": "apm run lint && tsc",
+    "build": "npm run lint && tsc",
+    "dbreset": "firebase firestore:delete --all-collections",
+    "dbreset:administrators": "firebase firestore:delete -y --shallow administrators",
+    "dbseed": "npm run dbseed:administrators",
+    "dbseed:administrators": "node lib/commands/dbseed.js administrators seeds/administrators.tsv",
     "serve": "npm run build && firebase serve --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
@@ -15,6 +19,9 @@
   },
   "main": "lib/index.js",
   "dependencies": {
+    "commander": "^4.1.0",
+    "csv-parse": "^4.8.5",
+    "firebase": "^7.7.0",
     "firebase-admin": "^8.6.0",
     "firebase-functions": "^3.3.0"
   },
@@ -22,6 +29,7 @@
     "@types/eslint": "^6.1.7",
     "@types/eslint-plugin-prettier": "^2.2.0",
     "@types/jest": "^24.9.1",
+    "@types/node": "^13.5.0",
     "@types/prettier": "^1.19.0",
     "@typescript-eslint/eslint-plugin": "^2.17.0",
     "@typescript-eslint/parser": "^2.17.0",
