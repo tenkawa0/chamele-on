@@ -12,18 +12,17 @@ import puppeteer from 'puppeteer';
   await page.goto(url, { waitUntil: 'domcontentloaded' });
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const weeks = await page.$$(
-    '#contents > div.clearfix > div.main_area.mt_20 > table > tbody > tr',
+  const calendar = await page.$(
+    '#contents > div.clearfix > div.main_area.mt_20 > table > tbody',
   );
 
-  for await (const week of weeks) {
-    const days = await week.$$('td');
-    for await (const day of days) {
-      const items = await day.$$('.events > ul > li');
-      for await (const item of items) {
-        console.log(await item.$eval('.tooltip', e => e.textContent));
-      }
-    }
+  // カレンダーに表示されているイベントのURLを全て取得
+  if (calendar) {
+    const hrefs = await calendar.$$eval('a', elements =>
+      elements.map(element => element.getAttribute('href')),
+    );
+    console.log(hrefs);
   }
+
   await browser.close();
 })();
