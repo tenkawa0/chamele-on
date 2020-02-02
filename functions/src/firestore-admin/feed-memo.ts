@@ -9,7 +9,9 @@ export const saveFeedMemo = async (
   administrator: string,
 ) => {
   const memosRef = db.collection(collectionName.feedMemos);
-  const query = await memosRef.where('admini', '==', administrator).get();
+  const query = await memosRef
+    .where('administrator', '==', administrator)
+    .get();
   const existingMemos = query.docs.map(doc => doc.data() as FeedMemo);
   let count = 0;
 

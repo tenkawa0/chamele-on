@@ -31,6 +31,7 @@ export const administrators = functions
     const data = snap.docs.map(doc => doc.data());
     res.send({ data });
   });
+
 export const fetchCalendar = functions
   .region('asia-northeast1')
   .runWith({
@@ -48,5 +49,5 @@ export const fetchCalendar = functions
     const fetchCount = await saveFeedMemo(db, memos, 'connpass');
 
     await browser.close();
-    console.log(`Fetched Kodansha calendar. Wrote ${fetchCount} memos.`);
+    console.log(`Fetched Connpass calendar. Wrote ${fetchCount} memos.`);
   });
