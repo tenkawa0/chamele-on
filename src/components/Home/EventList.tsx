@@ -1,17 +1,15 @@
 import React from 'react';
 import { Item } from 'semantic-ui-react';
-import { EventCard } from '../common/card/EventCard';
-import { Event } from '../../service/chamele-on/model/event';
+import EventCard from '../common/Card/EventCard';
+import { FeedMemo } from '../../service/chamele-on/model/feed-memo';
 
-const EventList: React.FC<{ events: Event[] }> = ({ events }) => {
+const EventList: React.FC<{ events: FeedMemo[] }> = ({ events }) => {
   return (
-    <>
-      <Item.Group>
-        {events.map(event => (
-          <EventCard event={event} />
-        ))}
-      </Item.Group>
-    </>
+    <Item.Group>
+      {events.map(event => (
+        <EventCard event={event} key={event.id} />
+      ))}
+    </Item.Group>
   );
 };
 

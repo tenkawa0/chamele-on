@@ -1,17 +1,24 @@
 import React from 'react';
-import { Icon, Card } from 'semantic-ui-react';
-import { Event } from '../../../service/chamele-on/model/event';
+import { Card, Image, List } from 'semantic-ui-react';
+import { FeedMemo } from '../../../service/chamele-on/model/feed-memo';
 
-export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
+const EventCard: React.FC<{ event: FeedMemo }> = ({ event }) => {
   return (
-    <Card>
-      <Card.Content header={event.title} />
-      <Card.Content description={event.date} />
-      <Card.Content extra>
-        <Icon color="red" name="map marker alternate" /> {event.location}
+    <Card href={event.url}>
+      <Card.Content>
+        <Image floated="left" size="medium" src={event.thumbnail} />
+        <Card.Header content={event.title} />
+        <Card.Meta content={event.subTitle} />
+        <Card.Description>
+          <List>
+            <List.Item content={event.date} />
+            <List.Item content={event.place} />
+            <List.Item content={event.address} />
+          </List>
+        </Card.Description>
       </Card.Content>
     </Card>
   );
 };
 
-//export default EventCard;
+export default EventCard;
