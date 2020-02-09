@@ -1,10 +1,10 @@
 import React from 'react';
-import EventList from '../../containers/Home/EventList';
+import EventCardList from '../ecosystems/EventCardListContainer';
 
 const Home: React.FC = () => {
   return (
     <main>
-      <EventList />
+      <EventCardList />
     </main>
   );
 };
