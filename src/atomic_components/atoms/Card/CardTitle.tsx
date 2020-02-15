@@ -7,17 +7,11 @@ import { ThemeContext } from 'contexts';
 const CardTitle: React.FC<CardHeaderProps> = ({ children, ...props }) => {
   const theme = useContext(ThemeContext);
   const Title = styled(Card.Header)`
-    color: ${theme.color.black} !important;
-    font-size: 0.9rem !important;
-    font-weight: 600 !important;
-    margin-top: 0.1rem !important;
+    color: ${theme.color.black};
+    font-weight: bold;
   `;
 
-  return (
-    <Title {...props}>
-      <strong>{children}</strong>
-    </Title>
-  );
+  return <Title {...props}>{children}</Title>;
 };
 
 export default CardTitle;

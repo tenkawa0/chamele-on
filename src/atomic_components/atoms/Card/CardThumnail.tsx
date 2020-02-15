@@ -5,16 +5,20 @@ import { Image } from 'semantic-ui-react';
 import { ImageProps } from 'semantic-ui-react/dist/commonjs/elements/Image';
 
 const CardThumnail: FC<ImageProps> = ({ children, ...props }) => {
-  const Thumnail = styled(Image)`
+  const Thumnail = styled.div`
     background-size: contain;
-    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.1));
-    margin-bottom: 0 !important;
-    width: 250px;
+    margin-bottom: 10px;
+
+    @media screen and (min-width: 1024px) {
+      width: 30% !important;
+    }
   `;
 
   return (
-    <Thumnail {...props} loading="lazy">
-      {children}
+    <Thumnail>
+      <Image {...props} loading="lazy" bordered>
+        {children}
+      </Image>
     </Thumnail>
   );
 };

@@ -12,7 +12,8 @@ const CardDescription: React.FC<CardDescriptionProps> = ({
   const Description = styled(Card.Description)`
     &&& {
       color: ${theme.color.black};
-      font-size: 0.8;
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
     }
   `;
 
