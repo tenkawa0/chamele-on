@@ -4,26 +4,25 @@ import { Administrator } from './administrator';
 export type Event = {
   id?: string;
   title: string;
-  titleReading: string | null;
-  administratorId: string;
-  administrator: Administrator | null;
+  subTitle: string;
   url: string;
-  location: string;
-  participant: number;
-  date: firestore.Timestamp | null;
+  thumbnail: string;
+  place: string;
+  address: string;
+  date: string;
+  prefecture: string;
   fetchedAt: firestore.Timestamp | null;
   createdAt: firestore.Timestamp | null;
 };
 
 export const blankEvent: Event = {
   title: '',
-  titleReading: null,
-  administratorId: '',
-  administrator: null,
+  subTitle: '',
   url: '',
-  location: '',
-  participant: 0,
-  date: null,
+  thumbnail: '',
+  place: '',
+  address: '',
+  date: '',
   fetchedAt: null,
   createdAt: null,
 };
