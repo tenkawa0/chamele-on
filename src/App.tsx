@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
 
-import Home from './components/Home';
+import Home from './atomic_components/environments/Home';
 
 import paths from './paths';
 import './App.css';

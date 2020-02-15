@@ -1,15 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import firebase from 'firebase/app';
+
+import App from './App';
+import FirebaseApp from './FirebaseApp';
+import { ThemeContext } from './contexts';
+import chameleonTheme from './theme';
+import firebaseConfig from './firebase-config';
 
 import './index.css';
 import 'semantic-ui-css/semantic.min.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+firebase.initializeApp(firebaseConfig);
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <FirebaseApp>
+      <ThemeContext.Provider value={chameleonTheme}>
+        <App />
+      </ThemeContext.Provider>
+    </FirebaseApp>
   </BrowserRouter>,
   document.getElementById('root'),
 );
