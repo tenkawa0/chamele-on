@@ -11,16 +11,20 @@ export const createEvent = async (
   db: admin.firestore.Firestore,
   memo: FeedMemo,
 ) => {
+  const eventId = memo.eventId ?? '';
   const title = memo.title ?? '';
   const subTitle = memo.subTitle ?? '';
   const url = memo.url ?? '';
+  const thumbnail = memo.thumbnail ?? '';
+  const place = memo.place ?? '';
+  const address = memo.address ?? '';
+  const prefecture = memo.prefecture ?? '';
 
-  const date = parseFromTimeZone(memo.date, { timeZone: 'Asia/Tokyo' });
+  const date = parseFromTimeZone(memo.date ?? '', { timeZone: 'Asia/Tokyo' });
   const tDate = admin.firestore.Timestamp.fromDate(date);
 
   const event: Event = {
     ...blankEvent,
-    eventId,
     title,
     subTitle,
     url,
@@ -32,12 +36,10 @@ export const createEvent = async (
   };
 
   const eventsRef = db.collection(collectionName.events);
-  await eventsRef.doc(event.eventId).set({
+  await eventsRef.doc(eventId).set({
     ...event,
     createdAt: admin.firestore.FieldValue.serverTimestamp(),
     updatedAt: admin.firestore.FieldValue.serverTimestamp(),
   });
   await addCounter(db, collectionName.events);
-
-  return { ...event, id: eventId };
 };

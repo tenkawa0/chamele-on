@@ -7,7 +7,8 @@ import { isDevelopment } from './utils/env';
 admin.initializeApp();
 
 const functionMap = {
-  fetchCalendar: './fetch-events.ts',
+  fetchConnpass: './fetch-events',
+  registerEvents: './register-events',
 };
 
 const devFunctionMap = {};

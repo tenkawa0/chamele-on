@@ -2,7 +2,6 @@ import { firestore } from 'firebase/app';
 
 export type Event = {
   id?: string;
-  eventId: string;
   title: string;
   subTitle: string;
   url: string;
@@ -16,7 +15,6 @@ export type Event = {
 };
 
 export const blankEvent: Event = {
-  eventId: '',
   title: '',
   subTitle: '',
   url: '',

@@ -28,7 +28,8 @@ export const feedConnpass = async (page: puppeteer.Page) => {
         await page.goto(href, {
           waitUntil: 'domcontentloaded',
         });
-        memo.eventId = href.match(/\d+/)?.toString() ?? '';
+        const eventId = href.match(/\d+/)?.toString();
+        memo.eventId = `connpass:${eventId}`;
       }
 
       memo.title = await page.title();
