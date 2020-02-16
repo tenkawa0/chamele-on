@@ -8,7 +8,6 @@ admin.initializeApp();
 
 const functionMap = {
   fetchCalendar: './fetch-events.ts',
-  registerBooks: './register-books',
 };
 
 const devFunctionMap = {};

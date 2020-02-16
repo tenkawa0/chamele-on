@@ -33,7 +33,7 @@ module.exports = functions
     const db = admin.firestore();
 
     const memos = await feedConnpass(page);
-    const fetchCount = await saveFeedMemo(db, memos, 'kodansha');
+    const fetchCount = await saveFeedMemo(db, memos, 'connpass');
 
     await browser.close();
     console.log(`Fetched Connpass events. Wrote ${fetchCount} memos.`);

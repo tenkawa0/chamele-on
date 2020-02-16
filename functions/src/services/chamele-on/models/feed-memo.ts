@@ -2,6 +2,7 @@ import { firestore } from 'firebase/app';
 
 export type FeedMemo = {
   id?: string;
+  eventId: string | null;
   title: string | null;
   subTitle: string | null;
   url: string | null;
@@ -16,6 +17,7 @@ export type FeedMemo = {
 };
 
 export const blankFeedMemo: FeedMemo = {
+  eventId: null,
   title: null,
   subTitle: null,
   url: null,
