@@ -5,7 +5,7 @@ import { LabelProps } from 'semantic-ui-react/dist/commonjs/elements/Label';
 
 const CardDate: React.FC<LabelProps> = ({ children, ...props }) => {
   return (
-    <Label {...props} ribbon color="teal">
+    <Label {...props} ribbon>
       {children}
     </Label>
   );

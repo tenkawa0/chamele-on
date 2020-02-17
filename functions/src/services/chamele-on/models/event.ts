@@ -1,15 +1,14 @@
 import { firestore } from 'firebase/app';
-import { Administrator } from './administrator';
 
 export type Event = {
   id?: string;
   title: string;
-  titleReading: string | null;
-  administratorId: string;
-  administrator: Administrator | null;
+  subTitle: string;
   url: string;
-  location: string;
-  participant: number;
+  thumbnail: string;
+  place: string;
+  address: string;
+  prefecture: string;
   date: firestore.Timestamp | null;
   fetchedAt: firestore.Timestamp | null;
   createdAt: firestore.Timestamp | null;
@@ -17,12 +16,12 @@ export type Event = {
 
 export const blankEvent: Event = {
   title: '',
-  titleReading: null,
-  administratorId: '',
-  administrator: null,
+  subTitle: '',
   url: '',
-  location: '',
-  participant: 0,
+  thumbnail: '',
+  place: '',
+  address: '',
+  prefecture: '',
   date: null,
   fetchedAt: null,
   createdAt: null,

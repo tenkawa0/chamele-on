@@ -4,9 +4,9 @@ import EventCardList from '../organisms/List/EventCardList';
 import useEvents from '../../hooks/use-events';
 
 const EventCardListContainer: React.FC = () => {
-  const { feedMemos } = useEvents();
+  const { events } = useEvents();
 
-  return <EventCardList events={feedMemos} />;
+  return <EventCardList events={events} />;
 };
 
 export default EventCardListContainer;
