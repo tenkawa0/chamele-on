@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import EventCard from '../../molecules/Card/EventCard';
-import { FeedMemo } from '../../../service/chamele-on/model/feed-memo';
+import { Event } from '../../../service/chamele-on/model/event';
 
-const EventList: React.FC<{ events: FeedMemo[] }> = ({ events }) => {
+const EventList: React.FC<{ events: Event[] }> = ({ events }) => {
   const ListWrapper = styled.div`
     margin: 1rem 0.5rem;
   `;
