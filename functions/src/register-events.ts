@@ -14,7 +14,7 @@ module.exports = functions
     timeoutSeconds: 500,
     memory: '1GB',
   })
-  .pubsub.schedule('5,10,15 2 1,10,20 * *')
+  .pubsub.schedule('0 11,23 * * *')
   .timeZone(functions.config().locale.timezone)
   .onRun(async () => {
     const db = admin.firestore();

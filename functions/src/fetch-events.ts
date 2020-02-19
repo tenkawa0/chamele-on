@@ -25,7 +25,7 @@ module.exports = functions
     timeoutSeconds: 300,
     memory: '2GB',
   })
-  .pubsub.schedule('0 2 1,10,20 * *')
+  .pubsub.schedule('0 10,22 * * *')
   .timeZone(functions.config().locale.timezone)
   .onRun(async () => {
     const browser = await puppeteer.launch(PUPPETEER_OPTIONS);
