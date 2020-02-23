@@ -5,21 +5,41 @@ import {
 } from '../services/chamele-on/models/feed-memo';
 
 export const feedConnpass = async (page: puppeteer.Page) => {
-  const url = 'https://connpass.com/calendar/hyogo/';
-  await page.goto(url, { waitUntil: 'domcontentloaded' });
+  const urls = new Map([
+    ['hyogo', 'https://connpass.com/calendar/hyogo/'],
+    ['osaka', 'https://connpass.com/calendar/osaka/'],
+  ]);
 
   const memos: FeedMemo[] = [];
+  const hrefs: string[] = [];
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const calendar = await page.$(
-    '#contents > div.clearfix > div.main_area.mt_20 > table > tbody',
-  );
+  for await (const [pref, url] of urls) {
+    await page.goto(url, { waitUntil: 'domcontentloaded' });
 
-  if (calendar) {
-    // カレンダーに表示されているイベントのURLを全て取得
-    const hrefs = await calendar.$$eval('a', elements =>
-      elements.map(element => element.getAttribute('href')),
-    );
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    for await (const _ of [0, 1]) {
+      const calendar = await page.$(
+        '#contents > div.clearfix > div.main_area.mt_20 > table > tbody',
+      );
+
+      if (calendar) {
+        // カレンダーに表示されているイベントのURLを全て取得
+        const hrefList = await calendar.$$eval('a', elements =>
+          elements.map(element => element.getAttribute('href')),
+        );
+
+        for (const href of hrefList) {
+          if (href) hrefs.push(href);
+        }
+      }
+
+      await Promise.all([
+        page.waitForNavigation(),
+        page.click(
+          '#contents > div.clearfix > div.mb_15 > span > ul > li:nth-child(4) > a',
+        ),
+      ]);
+    }
 
     // イベント詳細ページから情報を抽出
     for await (const href of hrefs) {
@@ -75,7 +95,7 @@ export const feedConnpass = async (page: puppeteer.Page) => {
       }
 
       memo.administrator = 'connpass';
-      memo.prefecture = 'hyogo';
+      memo.prefecture = pref;
 
       memos.push(memo);
     }
