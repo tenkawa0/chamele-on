@@ -8,7 +8,6 @@ import CardDate from '../../atoms/Card/CardDate';
 import CardThumnail from '../../atoms/Card/CardThumnail';
 import CardContent from '../../atoms/Card/CardContent';
 import CardDescription from '../../atoms/Card/CardDescription';
-
 import { Event } from '../../../service/chamele-on/model/event';
 
 const EventCard: React.FC<{ event: Event }> = ({ event }) => {
@@ -44,10 +43,10 @@ const EventCard: React.FC<{ event: Event }> = ({ event }) => {
     default:
   }
 
-  // Todo: Noimageのサムネイル画像を作成して差し替える。
+  // fire storageのgetDownloadURL()を使用すると処理が冗長になるため、直接noimage.jpgを参照
   const thumbnail = event.thumbnail
     ? event.thumbnail
-    : 'https://react.semantic-ui.com/images/wireframe/image.png';
+    : 'https://firebasestorage.googleapis.com/v0/b/chamele-on.appspot.com/o/images%2Fnoimage.jpg?alt=media';
 
   return (
     <ItemCard key={event.id} href={event.url}>
