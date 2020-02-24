@@ -44,11 +44,16 @@ const EventCard: React.FC<{ event: Event }> = ({ event }) => {
     default:
   }
 
+  // Todo: Noimageのサムネイル画像を作成して差し替える。
+  const thumbnail = event.thumbnail
+    ? event.thumbnail
+    : 'https://react.semantic-ui.com/images/wireframe/image.png';
+
   return (
     <ItemCard key={event.id} href={event.url}>
       <CardContent>
         <CardThumnail
-          src={event.thumbnail}
+          src={thumbnail}
           label={<CardDate color={dayColor}>{dateFormat}</CardDate>}
         />
         <CardTitle>{event.title}</CardTitle>
