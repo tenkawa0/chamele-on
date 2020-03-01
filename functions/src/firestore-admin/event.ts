@@ -36,10 +36,13 @@ export const createEvent = async (
   };
 
   const eventsRef = db.collection(collectionName.events);
-  await eventsRef.doc(eventId).set({
-    ...event,
-    createdAt: admin.firestore.FieldValue.serverTimestamp(),
-    updatedAt: admin.firestore.FieldValue.serverTimestamp(),
-  });
+  await eventsRef.doc(eventId).set(
+    {
+      ...event,
+      createdAt: admin.firestore.FieldValue.serverTimestamp(),
+      updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+    },
+    { merge: true },
+  );
   await addCounter(db, collectionName.events);
 };
