@@ -35,7 +35,7 @@ const EventCardListContainer: React.FC = () => {
   panes.push({
     pane: (
       <Tab.Pane key="osaka">
-        <EventCardList events={osakaEvents} />{' '}
+        <EventCardList events={osakaEvents} />
       </Tab.Pane>
     ),
     menuItem: 'osaka',

@@ -11,10 +11,11 @@ export const feedConnpass = async (page: puppeteer.Page) => {
   ]);
 
   const memos: FeedMemo[] = [];
-  const hrefs: string[] = [];
 
   for await (const [pref, url] of urls) {
-    await page.goto(url, { waitUntil: 'domcontentloaded' });
+    const hrefs: string[] = [];
+
+    await Promise.all([page.waitForNavigation(), page.goto(url)]);
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     for await (const _ of [0, 1]) {
@@ -29,7 +30,9 @@ export const feedConnpass = async (page: puppeteer.Page) => {
         );
 
         for (const href of hrefList) {
-          if (href) hrefs.push(href);
+          if (href) {
+            hrefs.push(href);
+          }
         }
       }
 
@@ -44,11 +47,10 @@ export const feedConnpass = async (page: puppeteer.Page) => {
     // イベント詳細ページから情報を抽出
     for await (const href of hrefs) {
       const memo = { ...blankFeedMemo };
+
       if (href) {
-        await page.goto(href, {
-          waitUntil: 'domcontentloaded',
-        });
-        const eventId = href.match(/\d+/)?.toString();
+        await Promise.all([page.waitForNavigation(), page.goto(href)]);
+        const eventId = href.match(/\d+\/$/)?.toString();
         memo.eventId = `connpass:${eventId}`;
       }
 
