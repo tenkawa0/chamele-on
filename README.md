@@ -12,7 +12,8 @@ https://chamele-on.web.app/
 【今できていること】
 
 - Connpass から兵庫・大阪の勉強会情報を取得してリスト表示(タブで切替)
-- Clound Functions でクローリング処理をスケジュール実行
+- Clound Functions でクローリング処理をスケジュール実行<br />
+  (Deploy 後、処理中にタイムウトエラーが発生するようになった、現在調査中)
 
 【今後実装する機能】
 
