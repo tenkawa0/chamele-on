@@ -1,3 +1,5 @@
+# お金がかかるのでサイトは停止中。。。
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## React 勉強用リポジトリ
